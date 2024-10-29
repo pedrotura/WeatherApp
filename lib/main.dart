@@ -12,3 +12,4 @@ class WeatherApp extends StatelessWidget {
     return const Placeholder();
   }
 }
+
