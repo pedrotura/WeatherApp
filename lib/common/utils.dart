@@ -44,3 +44,6 @@ const buttonTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
   color: lightThemeBackgroundColor
 );
+
+//chave da API de pesquisa
+const apiKey = '6722a4fa6bfa7223818895fzyad900a';

@@ -22,7 +22,6 @@ class HomePage extends StatelessWidget {
               margin: const EdgeInsets.only(top: 23.0),
               child: const Text('A simple weather forecast application created for checking all sorts of statistics.', style: descriptionTextStyle, textAlign: TextAlign.justify),
             ),
-            
             GestureDetector(
               onTap: () {},
               child: Container(
