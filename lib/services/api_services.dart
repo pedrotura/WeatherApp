@@ -18,10 +18,8 @@ class ApiServices {
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      List<Place> places = [];
-      for (int i = 0; i < response.body.length; i++) {
-        places.add(Place.fromJson(jsonDecode(response.body[i])));
-      }
+      final body = json.decode(response.body);
+      List<Place> places = List<Place>.from(body.map((x) => Place.fromJson(x)));
       return places;
     }
     throw Exception('Failed to load coordinates.');

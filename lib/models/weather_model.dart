@@ -7,7 +7,7 @@ class Weather {
   int utcOffsetSeconds;
   String timezone;
   String timezoneAbbreviation;
-  int elevation;
+  double elevation;
   HourlyUnits hourlyUnits;
   Hourly hourly;
   DailyUnits dailyUnits;

@@ -24,14 +24,12 @@ const purpleGradient = LinearGradient(
 );
 
 const titleTextStyle = TextStyle(
-  fontFamily: 'Roboto',
   fontSize: 44.0,
   fontWeight: FontWeight.w500,
   color: yellowColor
 );
 
 const descriptionTextStyle = TextStyle(
-  fontFamily: 'Roboto',
   fontSize: 12.0,
   fontWeight: FontWeight.w300,
   height: 1.7,
@@ -39,11 +37,57 @@ const descriptionTextStyle = TextStyle(
 );
 
 const buttonTextStyle = TextStyle(
-  fontFamily: 'Roboto',
   fontSize: 16.0,
   fontWeight: FontWeight.w500,
   color: lightThemeBackgroundColor
 );
 
+const addLocationTitleTextStyle = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w700,
+  color: purpleBackgroundColor
+);
+
+const addLocationSubtitleTextStyle = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w400,
+  color: purpleBackgroundColor
+);
+
+const hintTextStyle = TextStyle(
+  fontSize: 18.0,
+  fontWeight: FontWeight.w400,
+  color: primaryGrayColor
+);
+
+const leadingLabelTextStyle = TextStyle(
+  fontSize: 16.0,
+  fontWeight: FontWeight.w500,
+  color: darkThemeLabelColor
+);
+
+const temperatureLabelTextStyle = TextStyle(
+  fontSize: 24.0,
+  fontWeight: FontWeight.w500,
+  color: purpleBackgroundColor
+);
+
 //chave da API de pesquisa
 const apiKey = '6722a4fa6bfa7223818895fzyad900a';
+
+//lista provisória
+class SimplifiedPlace {
+  String city;
+  String temperature;
+
+  SimplifiedPlace({
+    required this.city,
+    required this.temperature
+  });
+}
+
+List<SimplifiedPlace> places = [
+  SimplifiedPlace(city: 'New Mexico, USA', temperature: '28°'),
+  SimplifiedPlace(city: 'Paris, France', temperature: '24°'),
+  SimplifiedPlace(city: 'Barcelona, Spain', temperature: '32°')
+];
