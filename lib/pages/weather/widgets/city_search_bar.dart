@@ -43,10 +43,12 @@ class _CitySearchBarState extends State<CitySearchBar> {
         return null;
       },
       decoration: const InputDecoration(
-        prefixIcon: Icon(Icons.search, size: 21.0),
+        prefixIcon: Icon(Icons.search, size: 24.0),
         prefixIconColor: primaryGrayColor,
-        hintText: 'Search a new city...',
+        hintText: 'Search for a new city...',
         hintStyle: hintTextStyle,
+        isDense: true,
+        contentPadding: EdgeInsets.only(top: 14.0),
         border: InputBorder.none,
       )
     ),

@@ -30,10 +30,12 @@ class _WeatherPageState extends State<WeatherPage> {
         leading: Container(
           margin: const EdgeInsets.only(left: 23.0),
           child: IconButton(
-            icon: const Icon(Icons.arrow_back_ios, color: darkThemeBackgroundColor, size: 21.0),
+            iconSize: 24.0,
+            icon: const Icon(Icons.arrow_back_ios, color: darkThemeBackgroundColor),
             onPressed: () => Navigator.pop(context),
-            hoverColor: lightThemeBackgroundColor
-          ),
+            hoverColor: lightThemeBackgroundColor,
+            highlightColor: lightThemeBackgroundColor
+          )
         ),
         title: const Text('Choose a city', style: addLocationTitleTextStyle),
         centerTitle: true,

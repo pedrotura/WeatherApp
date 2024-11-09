@@ -16,13 +16,22 @@ class WeatherLabel extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
         color: lightThemeLabelColor
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(place.city, style: leadingLabelTextStyle),
-          Text(place.temperature , style: temperatureLabelTextStyle),
-          const Icon(Icons.add)
-        ],
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: 160.0,
+              child: Text(place.city, style: leadingLabelTextStyle),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 21.0),
+              child: Text(place.temperature, style: temperatureLabelTextStyle),
+            ),
+            const Icon(Icons.add)
+          ],
+        ),
       ),
     );
   }

@@ -29,6 +29,12 @@ const titleTextStyle = TextStyle(
   color: yellowColor
 );
 
+const subtitleTextStyle = TextStyle(
+  fontSize: 36.0,
+  fontWeight: FontWeight.w500,
+  color: lightThemeLabelColor
+);
+
 const descriptionTextStyle = TextStyle(
   fontSize: 12.0,
   fontWeight: FontWeight.w300,
