@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 //paleta de cores para o tema claro
 const lightThemeBackgroundColor = Color(0xFFF5F4FF);
 const lightThemeLabelColor = Color(0xFFFFFFFF);
+const lightThemeLabelTextColor = Color(0xFF575757);
 
 //paleta de cores para o tema escuro
 const darkThemeBackgroundColor = Color(0xFF272727);
-const darkThemeLabelColor = Color(0xFF575757);
+const darkThemeLabelColor = Color(0xFF303030);
 
 //cores adicionais
 const secondaryGrayColor = Color(0xFF9F9F9F);
@@ -49,6 +50,7 @@ const buttonTextStyle = TextStyle(
 );
 
 const addLocationTitleTextStyle = TextStyle(
+  fontFamily: 'Roboto',
   fontSize: 18.0,
   fontWeight: FontWeight.w700,
   color: purpleBackgroundColor
@@ -69,7 +71,7 @@ const hintTextStyle = TextStyle(
 const leadingLabelTextStyle = TextStyle(
   fontSize: 16.0,
   fontWeight: FontWeight.w500,
-  color: darkThemeLabelColor
+  color: lightThemeLabelTextColor
 );
 
 const temperatureLabelTextStyle = TextStyle(

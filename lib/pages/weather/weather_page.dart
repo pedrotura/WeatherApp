@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weather_app/common/utils.dart';
 import 'package:weather_app/models/place_model.dart';
 import 'package:weather_app/pages/weather/widgets/city_search_bar.dart';
 import 'package:weather_app/pages/weather/widgets/weather_label.dart';
+import 'package:weather_app/providers/theme_provider.dart';
 import 'package:weather_app/services/api_services.dart';
 
 class WeatherPage extends StatefulWidget {
@@ -15,6 +17,8 @@ class WeatherPage extends StatefulWidget {
 class _WeatherPageState extends State<WeatherPage> {
   ApiServices apiServices = ApiServices();
   late Future<List<Place>> placesFuture;
+  
+  bool _isDarkThemeActive = false;
 
   @override
   void initState() {
@@ -22,24 +26,58 @@ class _WeatherPageState extends State<WeatherPage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setState(() {
+      _isDarkThemeActive = Provider.of<ThemeProvider>(context).isDarkThemeActive;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightThemeBackgroundColor,
       appBar: AppBar(
-        backgroundColor: lightThemeBackgroundColor,
         leading: Container(
           margin: const EdgeInsets.only(left: 23.0),
           child: IconButton(
-            iconSize: 24.0,
-            icon: const Icon(Icons.arrow_back_ios, color: darkThemeBackgroundColor),
+            iconSize: 21.0,
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: _isDarkThemeActive ? lightThemeLabelColor : darkThemeBackgroundColor ,
+            ),
             onPressed: () => Navigator.pop(context),
-            hoverColor: lightThemeBackgroundColor,
-            highlightColor: lightThemeBackgroundColor
-          )
+            hoverColor: _isDarkThemeActive ? darkThemeBackgroundColor : lightThemeBackgroundColor,
+            highlightColor: _isDarkThemeActive ? darkThemeBackgroundColor : lightThemeBackgroundColor,
+          ),
         ),
-        title: const Text('Choose a city', style: addLocationTitleTextStyle),
+        title: Text(
+          'Choose a city',
+          style: _isDarkThemeActive
+                ? addLocationTitleTextStyle.copyWith(
+                    color: lightThemeBackgroundColor
+                  )
+                : addLocationTitleTextStyle
+          ),
         centerTitle: true,
-        toolbarHeight: 108.0,
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 23.0),
+            child: IconButton(
+              onPressed: () {
+                final provider = Provider.of<ThemeProvider>(context, listen: false);
+                provider.changeAppTheme();
+                setState(() {
+                  _isDarkThemeActive = provider.isDarkThemeActive;
+                });
+              },
+              iconSize: 21.0,
+              icon: _isDarkThemeActive ? Icon(Icons.dark_mode, color: lightThemeLabelColor) : Icon(Icons.light_mode, color: darkThemeBackgroundColor),
+              hoverColor: _isDarkThemeActive ? darkThemeBackgroundColor : lightThemeBackgroundColor,
+              highlightColor: _isDarkThemeActive ? darkThemeBackgroundColor : lightThemeBackgroundColor,
+            ),
+          ),
+        ],
+        toolbarHeight: 92.0,
       ),
       body: Column(
         children: [
@@ -48,10 +86,17 @@ class _WeatherPageState extends State<WeatherPage> {
             children: [
               Container(
                 margin: const EdgeInsets.only(left: 16.0, top: 28.0, bottom: 20.0),
-                child: const Text('My cities', style: addLocationSubtitleTextStyle)
+                child: Text(
+                  'My cities',
+                  style: _isDarkThemeActive
+                        ? addLocationSubtitleTextStyle.copyWith(
+                            color: lightThemeLabelColor
+                          )
+                        : addLocationSubtitleTextStyle
+                  ),
               ),
-              const SizedBox(width: 200.0)
-            ]
+              const SizedBox(width: 200.0),
+            ],
           ),
           Expanded(
             child: ListView.builder(
@@ -60,9 +105,9 @@ class _WeatherPageState extends State<WeatherPage> {
                 return WeatherLabel(place: places[index]);
               }
             ),
-          )
-        ]
-      )
+          ),
+        ],
+      ),
     );
   }
 }
